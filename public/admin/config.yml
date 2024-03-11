@@ -15,12 +15,12 @@ collections:
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
       - { label: "Thumbnail", name: "image", widget: "image", default: "default-thumbnail.jpg" }
       - label: "Thumbnail"
-      name: "image"
-      widget: "object"
-      collapsed: true
-      fields: 
-        - {label: "Image", name: "url", widget: "image", default: "default-thumbnail.jpg" }
-        - {label: "Alt", name: "alt", widget: "string", default: "Channel Banner" }
+        name: "image"
+        widget: "object"
+        collapsed: true
+        fields: 
+          - {label: "Image", name: "url", widget: "image", default: "default-thumbnail.jpg" }
+          - {label: "Alt", name: "alt", widget: "string", default: "Channel Banner" }
       - { label: "Author", name: "author", widget: "string", default: "Altie" }
       - { label: "Tags", name: "tags", widget: "select", multiple: true, options: ["Code", "Personal-life", "Gaming", "Content", "Misc", "Projects"] }
       - { label: "Body", name: "body", widget: "markdown" }
