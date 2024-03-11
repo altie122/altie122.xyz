@@ -1,12 +1,12 @@
 ---
-title: Channel Changes
+title: 'Channel Changes'
 pubDate: 2024-03-11T22:18:04.885Z
-discription: Just channel changes and plans
-author: Altie
+discription: 'Just channel changes and plans'
+author: 'Altie'
 image:
   url: default-thumbnail.jpg
-  alt: Channel Banner
-tags: [Content]
+  alt: 'Channel Banner'
+tags: ["Content"]
 ---
 First blog post! But I'm not here to celebrate that, I have, and plan on making a ton of changes to the channel this year! I would also like to talk about what was up with last year.
 ## The channel's identity crises
