@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-
+import webmanifest from "astro-webmanifest";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
