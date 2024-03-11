@@ -7,8 +7,7 @@ image:
   url: default-thumbnail.jpg
   alt: Channel Banner
 author: Altie
-tags:
-  - Content
+tags: ["Content"]
 ---
 First blog post! But I'm not here to celebrate that, I have, and plan on making a ton of changes to the channel this year! I would also like to talk about what was up with last year.
 ## The channel's identity crises
