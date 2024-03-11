@@ -1,6 +1,6 @@
 ---
 title: 'Channel Changes'
-pubDate: 2024-03-11T22:18:04.885Z
+pubDate: 2024-03-11
 discription: 'Just channel changes and plans'
 author: 'Altie'
 image:
