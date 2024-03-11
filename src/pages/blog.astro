@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import Layout from '../layouts/Layout.astro';
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = await getCollection("posts");
+---
+
+<Layout title="Blog" description='Altie122' page="/">
+  <div class="container mx-auto">
+    <h1 class="text-2xl text-center">This is where I will post about my journey learning Astro.</h1>
+    <div class="grid grid-cols-2 md:gid-cols-1 gap-5 m-5">
+      {allPosts.map((post) => <BlogPost url={"/posts/" + post.slug} title={post.data.title} image={post.data.image} date={post.data.pubDate} author={post.data.author} description={post.data.description}/>)}
+    </div>
+  </div>
+</Layout>
