@@ -10,7 +10,6 @@ const BlogPost = defineTable({
     authorid: column.number({ references: () => Authors.columns.id }),
     image_url: column.text(),
     image_alt: column.text(),
-    tags: column.text(),
     body: column.text(),
     likes: column.number(),
     dislikes: column.number(),
@@ -44,5 +43,5 @@ const Youtube = defineTable({
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: { BlogPost, Authors },
+  tables: { BlogPost, Authors, API_Keys, Youtube },
 });
