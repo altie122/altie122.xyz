@@ -1,0 +1,18 @@
+---
+import { db, BlogPost, Authors, eq } from 'astro:db';
+import MarkdownPostLayout from '../../../layouts/MarkdownPostLayout.astro';
+
+const Posts = await db.select().from(BlogPost);
+
+const slug = Astro.params.slug
+if (Posts.slug != slug) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found'
+  });
+}
+---
+
+<MarkdownPostLayout frontmatter={BlogPost}>
+  {BlogPost.body}
+</MarkdownPostLayout>
