@@ -1,4 +1,0 @@
----
-const { title, url, image, date, author, description } = Astro.props
----
-<div class="w-fit rounded-lg bg-base-100 p-5"><a href={url}><img src={image.url} alt={image.alt} class=" max-w-[25vw] rounded-lg"/>{title}<span class="float-end">{author}</span><br />{date.toString().slice(0, 15)}<span class="float-end">{description}</span></a></div>

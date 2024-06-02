@@ -1,0 +1,43 @@
+---
+export const prerender = true;
+import { getCollection, type CollectionEntry } from 'astro:content';
+import type { GetStaticPathsOptions, Page } from "astro";
+import Layout from '../../layouts/Layout.astro';
+import Pagination from "~/components/paginationComponent.astro";
+import { BlogCard } from "../../components/BlogCard";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	// 	const posts = [...(await getCollection("blog")), ...(await getCollection("updates"))];
+	const posts = [...(await getCollection('posts', ({ data }) => {
+  return import.meta.env.PROD ? data.isDraft !== true : true;
+  // return data.isDraft !== true;
+	}))];
+
+	const sortedPosts = posts.sort(
+		(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+	);
+
+	return paginate(sortedPosts, { pageSize: 4 });
+}
+
+const { page } = Astro.props as {
+	page: Page<CollectionEntry<"posts">>;
+};
+
+const allPages = [...Array(page.lastPage).keys()].map((num) => {
+	return `/blog${num === 0 ? "" : `/${String(num + 1)}`}`;
+});
+
+const allPosts = await getCollection("posts");
+---
+
+<Layout title="Blog" description='Altie122' page="/">
+  <div class="container mx-auto">
+    <h1 class="text-2xl text-center">Blog :D</h1>
+    <p class="text-center">I really don't know what to put here...</p>
+    <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-5 m-5">
+      {allPosts.map((post) => <BlogCard url={"/blog/posts/" + post.slug} title={post.data.title} image={post.data.image} date={post.data.pubDate} author={post.data.author} description={post.data.description} client:only="react" />)}
+    </div>
+    <Pagination restRoute allPages={allPages} page={page} class="mx-auto" />
+  </div>
+</Layout>

@@ -4,7 +4,7 @@ pubDate: 2024-03-11
 description: "Just channel changes and plans"
 author: "Altie"
 image:
-  url: "/assets/images/default-thumbnail.jpg"
+  url: "/assets/images/default-thumbnail.png"
   alt: "Channel Banner"
 tags: ["Content"]
 ---

@@ -11,6 +11,7 @@ const postsCollection = defineCollection({
       alt: z.string(),
     }),
     tags: z.array(z.string()),
+    isDraft: z.boolean().optional(),
   }),
 });
 
