@@ -13,5 +13,7 @@ export default defineConfig({
   adapter: netlify(),
   redirects: {
     "/posts/[...slug]": "/blog/posts/[...slug]",
+    "/tags/[tag]": "/blog/tags/[tag]",
+    "/tags/": "/blog/tags/",
   },
 });

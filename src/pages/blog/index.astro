@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from '../layouts/Layout.astro';
-import BlogPost from "../components/BlogPost.astro";
+import Layout from '../../layouts/Layout.astro';
+import BlogPost from "../../components/BlogPost.astro";
 const allPosts = await getCollection("posts");
 ---
 
@@ -10,7 +10,7 @@ const allPosts = await getCollection("posts");
     <h1 class="text-2xl text-center">Blog :D</h1>
     <p class="text-center">I really don't know what to put here...</p>
     <div class="grid grid-cols-2 md:gid-cols-1 gap-5 m-5">
-      {allPosts.map((post) => <BlogPost url={"/posts/" + post.slug} title={post.data.title} image={post.data.image} date={post.data.pubDate} author={post.data.author} description={post.data.description}/>)}
+      {allPosts.map((post) => <BlogPost url={"/blog/posts/" + post.slug} title={post.data.title} image={post.data.image} date={post.data.pubDate} author={post.data.author} description={post.data.description}/>)}
     </div>
   </div>
 </Layout>

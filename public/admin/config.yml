@@ -1,3 +1,4 @@
+# local_backend: true # only uncomment when using "npx decap-server" ALWAYS RECOMMENT BEFORE PUSHING
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
@@ -8,10 +9,11 @@ collections:
     label: "Blog" # Used in the UI
     folder: "src/content/posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    media_folder: "/public/assets/images/blog/{{slug}}" # Location where files will be stored in the repo
+    public_folder: "/assets/images/blog/{{slug}}" # The src attribute for uploaded media
     fields: # The fields for each document, usually in front matter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "discription", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
       - { label: "Publish Date", name: "pubDate", widget: "datetime" }
       - label: "Thumbnail"
         name: "image"
@@ -22,7 +24,7 @@ collections:
               label: "Image",
               name: "url",
               widget: "image",
-              default: "default-thumbnail.jpg",
+              default: "/assets/images/default-thumbnail.jpg",
             }
           - {
               label: "Alt",
