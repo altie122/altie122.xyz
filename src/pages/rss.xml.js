@@ -4,14 +4,14 @@ import { getCollection } from "astro:content";
 export async function GET(context) {
   const posts = await getCollection("posts");
   return rss({
-    title: "Astro Learner | Blog",
-    description: "My journey learning Astro",
+    title: "Atelie122's blog",
+    description: "Altie122's blog posts I guess",
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/posts/${post.slug}/`,
+      link: `/blog/posts/${post.slug}/`,
     })),
     customData: `<language>en-us</language>`,
   });
