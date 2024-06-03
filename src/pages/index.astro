@@ -1,9 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+
+let allPosts = await getCollection("posts");
+allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+let newestPost = allPosts![0];
+
+import { BlogCard } from "../components/BlogCard";
 ---
 
 <Layout title="Home" description='Altie122' page="/">
-	<main>
-		
+	<main class="prose">
+		<h1>Altie122</h1>
+		<h2>Links:</h2>
+		<ul>
+			<li><a href="https://github.com/Altie122">Github (personal)</a></li>
+			<li><a href="https://github.com/Altie122-youtube">Github (Channel related)</a></li>
+			<li><a href="https://www.youtube.com/@altie122">Youtube Channel</a></li>
+			<li><a href="https://www.twitch.tv/altie122">Twitch Channel</a></li>
+			<li><a href=`https://discord.gg/UmNRqRUpRe`>Discord Server</a></li>
+		</ul>
+		<h2>Projects:</h2>
+		<ul>
+			<li><a href="https://yt-to-ytnocookie.dovahkiin.xyz/">yt-to-ytnocookie</a></li>
+		</ul>
+		<h2>Newest Blog Post:</h2>
+		<br />
+		{
+			newestPost && <BlogCard url={"/blog/posts/" + newestPost.slug} title={newestPost.data.title} image={newestPost.data.image} date={newestPost.data.pubDate} author={newestPost.data.author} description={newestPost.data.description} client:only="react" />
+		}
 	</main>
 </Layout>
