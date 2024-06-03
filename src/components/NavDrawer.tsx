@@ -10,6 +10,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { pages } from "~/lib/consts";
+import { DiscordButton, TwitchButton, YoutubeButton } from "./SocialButtons";
 
 export function NavDrawer() {
   const handleClick = (url: string) => {
@@ -35,6 +36,9 @@ export function NavDrawer() {
                 )
 			      	))
 			      }
+            <DiscordButton />
+            <TwitchButton />
+            <YoutubeButton />
           </div>
           <DrawerFooter>
             <DrawerClose asChild>
