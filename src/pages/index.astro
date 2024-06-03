@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from "astro:content";
 
-let allPosts = await getCollection("posts");
+let allPosts = [...(await getCollection('posts', ({ data }) => {
+  return data.isDraft !== true;
+}))];
 allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 let newestPost = allPosts![0];
 
