@@ -5,11 +5,16 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title} description='Altie122' page="/">
   <div class="prose">
-  <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} class="rounded-lg"/>
-  tags: {frontmatter.tags.join(', ')}
-  <slot />
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="rounded-lg w-full"/>
+    <h1>{frontmatter.title}</h1>
+    <em>{frontmatter.description}</em>
+    <br/>
+    {frontmatter.pubDate.toString().slice(0, 10)}
+    <br/>
+    Written by: {frontmatter.author}
+    <br/>
+    tags: {frontmatter.tags.join(', ')}
+    <hr />
+    <slot />
   </div>
 </Layout>
