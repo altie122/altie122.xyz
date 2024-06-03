@@ -1,6 +1,28 @@
 import type React from "react";
 import { Button } from "./ui/button";
 
+export type SocialType = "Discord" | "Youtube" | "Twitch" | "Github" | null;
+
+interface SocialButtonsProps {
+  social: SocialType;
+}
+
+export function SocialButtons({ social }: SocialButtonsProps): JSX.Element | null {
+  switch (social) {
+    case "Discord":
+      return <DiscordButton />;
+    case "Youtube":
+      return <YoutubeButton />;
+    case "Twitch":
+      return <TwitchButton />;
+    case "Github":
+      return <GithubButton />;
+    default:
+      console.log("Unknown social: " + social);
+      return null;
+  }
+}
+
 // Buttons
 export function DiscordButton() {
   const handleClick = () => {
@@ -29,6 +51,15 @@ export function TwitchButton() {
   )
 }
 
+export function GithubButton() {
+  const handleClick = () => {
+    window.location.href = "https://github.com/altie122-youtube";
+  };
+  return(
+    <Button variant={'outline'} size="icon" onClick={() => handleClick()}><TablerBrandGithub /></Button>
+  )
+}
+
 // Icons
 function TablerBrandDiscord(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -47,5 +78,11 @@ function TablerBrandYoutube(props: React.SVGProps<SVGSVGElement>) {
 export function TablerBrandTwitch(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24" {...props}><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5v11a1 1 0 0 0 1 1h2v4l4-4h5.584c.266 0 .52-.105.707-.293l2.415-2.414c.187-.188.293-.442.293-.708V5a1 1 0 0 0-1-1h-14a1 1 0 0 0-1 1zm12 3v4m-4-4v4"></path></svg>
+  )
+}
+
+export function TablerBrandGithub(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24" {...props}><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"></path></svg>
   )
 }

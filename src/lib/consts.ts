@@ -20,3 +20,18 @@ export const pages = [ // All STATIC pages, dynamic pages like blog posts are no
     isExternal: true,
   },
 ]
+
+export const socialButtons = [
+  {
+    name: 'Twitch'
+  },
+  {
+    name: 'Youtube'
+  },
+  {
+    name: 'Discord'
+  },
+  {
+    name: 'Github'
+  },
+];

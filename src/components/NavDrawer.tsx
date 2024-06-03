@@ -9,8 +9,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import { pages } from "~/lib/consts";
-import { DiscordButton, TwitchButton, YoutubeButton } from "./SocialButtons";
+import { pages, socialButtons } from "~/lib/consts";
+import { SocialButtons, type SocialType } from "./SocialButtons";
 
 export function NavDrawer() {
   const handleClick = (url: string) => {
@@ -26,7 +26,7 @@ export function NavDrawer() {
           <DrawerHeader>
             <DrawerTitle>Navigation</DrawerTitle>
           </DrawerHeader>
-          <div className="p-4 pb-0 flex flex-wrap gap-2">
+          <div className="p-4 flex flex-wrap gap-2">
             {
 			      	pages.map((data) => (
                 data.isExternal ? (
@@ -36,15 +36,20 @@ export function NavDrawer() {
                 )
 			      	))
 			      }
-            <DiscordButton />
-            <TwitchButton />
-            <YoutubeButton />
+          </div>
+          <hr />
+          <div className="p-4 pb-0 flex flex-wrap gap-2">
+            {
+			      	socialButtons.map((data) => (
+                <SocialButtons social={data.name as SocialType}  />
+			      	))
+			      }
           </div>
           <DrawerFooter>
             <DrawerClose asChild>
               <Button variant="outline">Close</Button>
             </DrawerClose>
-          </DrawerFooter>
+          </DrawerFooter> 
         </div>
       </DrawerContent>
     </Drawer>
