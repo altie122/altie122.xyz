@@ -1,0 +1,20 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { SoundBoard, db } from 'astro:db';
+import { SoundCard } from '@/components/soundboardCard';
+
+const soundBoard = await db.select().from(SoundBoard);
+---
+
+<Layout title="Home" description='Altie122' page="/">
+	<main>
+    <h1 class="text-2xl text-center prose-h1">Sound Board</h1>
+    <p class="text-center prose-p">Suggest sounds on <a title="discord" href="https://discord.gg/UmNRqRUpRe" class="prose-a">discord</a>!<br/>For take down requests, please make a <a title="github" href="https://github.com/altie122-youtube/website/issues" class="prose-a">github issue</a>.</p>
+		<br />
+    <div class="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-5 m-5">
+      {
+        soundBoard.map((soundBoard) => <SoundCard {...soundBoard} client:load/>)
+      }
+    </div>
+	</main>
+</Layout>

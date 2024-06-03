@@ -1,38 +1,17 @@
-import { db, BlogPost, Authors } from "astro:db";
+import { db, SoundBoard } from "astro:db";
 
 // https://astro.build/db/seed
 export default async function seed() {
-  await db
-    .insert(Authors)
-    .values([{ id: 1, name: "Altie", image: "/icon.png" }]);
-  await db.insert(BlogPost).values([
+  await db.insert(SoundBoard).values([
     {
       id: 1,
-      title: "Channel Changes",
-      slug: "channel-changes-2024",
-      published: new Date("2024-03-11"),
-      description: "Just channel changes and plans.",
-      authorid: 1,
-      image_url: "/assets/images/default-thumbnail.jpg",
-      image_alt: "Channel Banner",
-      tags: "content",
-      body: "# test\\test",
-      likes: 0,
-      dislikes: 0,
-    },
-    {
-      id: 2,
-      title: "Channel Changes",
-      slug: "channel-changes-2024-1",
-      published: new Date("2024-03-12"),
-      description: "Just channel changes and plans.",
-      authorid: 1,
-      image_url: "/assets/images/default-thumbnail.jpg",
-      image_alt: "Channel Banner",
-      tags: "content",
-      body: "# test\\test",
-      likes: 0,
-      dislikes: 0,
+      title: "bruh",
+      description: "bruh",
+      created: new Date(),
+      length: 1,
+      thumbnailFile: "https://utfs.io/f/138fbbea-c4fc-4425-9dd3-4bb48a459a2b-1jgvrq.png",
+      audioFile: "https://utfs.io/f/ed052ae4-e8bd-481d-994e-8c038386afc5-mrkfky.mp3",
+      cooldown: 10,
     },
   ]);
 }
