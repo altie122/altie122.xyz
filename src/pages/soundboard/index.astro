@@ -3,7 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import { SoundBoard, db } from 'astro:db';
 import { SoundCard } from '@/components/soundboardCard';
 
-const soundBoard = await db.select().from(SoundBoard);
+let soundBoard = await db.select().from(SoundBoard);
+soundBoard = soundBoard.sort((a, b) => b.id - a.id);
 ---
 
 <Layout title="SoundBoard" description='Altie122' page="/">
