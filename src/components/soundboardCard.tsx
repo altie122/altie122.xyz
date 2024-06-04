@@ -1,4 +1,7 @@
-;import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+// import { io } from "socket.io-client";
+// import { socketServerUrl } from "@/lib/consts";
+// const socket = io(socketServerUrl, { withCredentials: true });
 import { useState, useEffect } from 'react';
 import {
   Card,
@@ -51,20 +54,27 @@ export function SoundCard( data: Data ) {
       source.start(0);
     }
   };
+
+  const playSoundOnStream = async () => {
+    socket.emit('playSound', data.id);
+  };
+
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>{data.title}</CardTitle>
-        <CardDescription>{data.description}</CardDescription>
-        {/* <CardDescription>{data.date.toString().slice(0, 15)} | {data.author}</CardDescription> */}
-      </CardHeader>
-      <CardContent>
-        <img src={data.thumbnailFile} alt='thumbnail' className=" rounded-lg w-full"/>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={() => playSound()}>Play locally</Button>
-        {/* <Button variant="outline" onClick={() => playSound()}>Play on Stream</Button> */}
-      </CardFooter>
-    </Card>
+    <div>
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>{data.title}</CardTitle>
+          <CardDescription>{data.description}</CardDescription>
+          {/* <CardDescription>{data.date.toString().slice(0, 15)} | {data.author}</CardDescription> */}
+        </CardHeader>
+        <CardContent>
+          <img src={data.thumbnailFile} alt='thumbnail' className=" rounded-lg w-full"/>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button variant="outline" onClick={() => playSound()}>Play locally</Button>
+          {/* <Button variant="outline" onClick={() => playSoundOnStream()}>Play on Stream</Button> */}
+        </CardFooter>
+      </Card>
+    </div>
   )
 }

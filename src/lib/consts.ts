@@ -10,6 +10,11 @@ export const pages = [ // All STATIC pages, dynamic pages like blog posts are no
     isExternal: false,
   },
   {
+    name: 'SoundBoard',
+    href: '/soundboard/',
+    isExternal: false,
+  },
+  {
     name: 'YT to YT No Cookie',
     href: 'https://yt-to-ytnocookie.dovahkiin.xyz/',
     isExternal: true,
@@ -35,3 +40,5 @@ export const socialButtons = [
     name: 'Github'
   },
 ];
+
+export const socketServerUrl = import.meta.env.PUBLIC_SOCKETIO_SERVER;

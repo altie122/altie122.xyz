@@ -17,7 +17,18 @@ const SoundBoard = defineTable({
   ]
 });
 
+const streamKeys = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    key: column.text(),
+    created: column.date({ default: NOW }),
+  },
+  indexes: [
+    { on: ["id", "created"], unique: true },
+  ]
+});
+
 // https://astro.build/db/config
 export default defineDb({
-  tables: { SoundBoard },
+  tables: { SoundBoard, streamKeys },
 });
