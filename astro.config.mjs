@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "www.altie122.xyz",
+  site: "https://www.altie122.xyz",
   integrations: [tailwind({applyBaseStyles: false,}), sitemap(), db(), react()],
   output: "server",
   adapter: netlify(),
