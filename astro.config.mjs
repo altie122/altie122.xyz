@@ -3,12 +3,11 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
 import netlify from "@astrojs/netlify";
-
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://altie122.dovahkiin.xyz",
+  site: "www.altie122.xyz",
   integrations: [tailwind({applyBaseStyles: false,}), sitemap(), db(), react()],
   output: "server",
   adapter: netlify(),
