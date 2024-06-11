@@ -15,6 +15,11 @@ export const pages = [ // All STATIC pages, dynamic pages like blog posts are no
     isExternal: false,
   },
   {
+    name: 'Minecraft Mods',
+    href: 'https://mods.altie122.xyz/',
+    isExternal: true,
+  },
+  {
     name: 'YT to YT No Cookie',
     href: 'https://yt-to-ytnocookie.dovahkiin.xyz/',
     isExternal: true,
