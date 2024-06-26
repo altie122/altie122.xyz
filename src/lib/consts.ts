@@ -10,6 +10,11 @@ export const pages = [ // All STATIC pages, dynamic pages like blog posts are no
     isExternal: false,
   },
   {
+    name: 'Video List',
+    href: '/videos',
+    isExternal: false,
+  },
+  {
     name: 'SoundBoard',
     href: '/soundboard/',
     isExternal: false,
