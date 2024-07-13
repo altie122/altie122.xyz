@@ -1,0 +1,98 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import VideoSortButtonsSuspense from '~/components/VideoSortButtons';
+import VideoCard from '@/components/VideoCard';
+let by: string = Astro.params.by;
+let direction: string = Astro.params.direction;
+
+by = by.toLowerCase();
+direction = direction.toLowerCase();
+
+console.log(by, direction);
+
+const by_options = ['date', 'views', 'likes', 'title'];
+const direction_options = ['desc', 'asc'];
+
+if (!by_options.includes(by)) {
+  return Astro.redirect('/videos/')
+}
+if (!direction_options.includes(direction)) {
+  return Astro.redirect('/videos/')
+}
+
+interface Video {
+  id: string;
+  title: string;
+  description: string;
+  views: number;
+  likes: number;
+  published: Date;
+  thumbnails: {
+    [key: string]: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+}
+const videos_raw = await fetch('https://videostats.pages.dev/videoStats.json');
+const videos_processing = await videos_raw.json();
+const videos_array: Video[] = Object.keys(videos_processing).map(videoId => ({
+  id: videoId,
+  title: videos_processing[videoId].title,
+  description: videos_processing[videoId].description,
+  views: videos_processing[videoId].views,
+  likes: videos_processing[videoId].likes,
+  published: new Date(videos_processing[videoId].published),
+  thumbnails: videos_processing[videoId].thumbnails,
+}));
+
+const videos_sorted_date_desc = [...videos_array].sort((a, b) => b.published.getTime() - a.published.getTime());
+const videos_sorted_date_asc = [...videos_array].sort((a, b) => a.published.getTime() - b.published.getTime());
+const videos_sorted_views_desc = [...videos_array].sort((a, b) => b.views - a.views);
+const videos_sorted_views_asc = [...videos_array].sort((a, b) => a.views - b.views);
+const videos_sorted_likes_desc = [...videos_array].sort((a, b) => b.likes - a.likes);
+const videos_sorted_likes_asc = [...videos_array].sort((a, b) => a.likes - b.likes);
+const videos_sorted_title_desc = [...videos_array].sort((a, b) => b.title.localeCompare(a.title));
+const videos_sorted_title_asc = [...videos_array].sort((a, b) => a.title.localeCompare(b.title));
+
+type SortedVideos = {
+  date_desc: Video[];
+  date_asc: Video[];
+  views_desc: Video[];
+  views_asc: Video[];
+  likes_desc: Video[];
+  likes_asc: Video[];
+  title_desc: Video[];
+  title_asc: Video[];
+};
+
+let sorted_videos: SortedVideos = {
+  date_desc: videos_sorted_date_desc,
+  date_asc: videos_sorted_date_asc,
+  views_desc: videos_sorted_views_desc,
+  views_asc: videos_sorted_views_asc,
+  likes_desc: videos_sorted_likes_desc,
+  likes_asc: videos_sorted_likes_asc,
+  title_desc: videos_sorted_title_desc,
+  title_asc: videos_sorted_title_asc,
+};
+
+const videos_count = videos_array.length;
+const videos = sorted_videos[`${by}_${direction}`];
+---
+
+<Layout title="Videos" description='Altie122' page="/videos">
+	<main class="prose">
+		<h1>Videos</h1>
+    <p>There are {videos_count} videos on my channel.</p>
+    <div class="py-5">
+      <VideoSortButtonsSuspense client:only='react' by={by} direction={direction} />
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      {videos.map(video => 
+        <VideoCard id={video.id} title={video.title} description={video.description} views={video.views} likes={video.likes} published={video.published} thumbnails={video.thumbnails} client:only='react' />
+      )}
+    </div>
+	</main>
+</Layout>
