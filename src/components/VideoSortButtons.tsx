@@ -5,7 +5,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { Button } from "./ui/button";
-import { Separator } from "@/components/ui/Separator";
+import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
 
 interface VideoSortButtonsProps {
