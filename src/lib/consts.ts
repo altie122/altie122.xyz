@@ -15,11 +15,11 @@ export const pages = [
     href: "/videos",
     isExternal: false,
   },
-  {
-    name: "SoundBoard",
-    href: "https://soundboard.altie122.xyz/",
-    isExternal: true,
-  },
+  // {
+  //   name: "SoundBoard",
+  //   href: "https://soundboard.altie122.xyz/",
+  //   isExternal: true,
+  // },
   {
     name: "Minecraft Mods",
     href: "https://mods.altie122.xyz/",
