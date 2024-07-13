@@ -1,19 +1,25 @@
 ---
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
+const title: string = frontmatter.title;
+const description: string = frontmatter.description;
+const pubDate: Date = frontmatter.pubDate;
+const image: {url: string, alt: string} = frontmatter.image;
+const author: string = frontmatter.author;
+const tags: string[] = frontmatter.tags;
 ---
 
-<Layout title={frontmatter.title} description='Altie122' page="/">
+<Layout title={title} description='Altie122' page="/">
   <div class="prose">
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="rounded-lg w-full"/>
-    <h1>{frontmatter.title}</h1>
-    <em>{frontmatter.description}</em>
+    <img src={image.url} alt={image.alt} class="rounded-lg w-full"/>
+    <h1>{title}</h1>
+    <em>{description}</em>
     <br/>
-    {frontmatter.pubDate.toString().slice(0, 10)}
+    {pubDate.toLocaleString()}
     <br/>
-    Written by: {frontmatter.author}
+    Written by: {author}
     <br/>
-    tags: {frontmatter.tags.join(', ')}
+    tags: {tags.join(', ')}
     <hr />
     <slot />
   </div>
