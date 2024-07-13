@@ -6,6 +6,8 @@ media_folder: "public/assets/images" # Location where files will be stored in th
 public_folder: "/assets/images" # The src attribute for uploaded media
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    extension: "mdx" # use .mdx instead of .md
+    format: "yaml-frontmatter" # still use yaml frontmatter format
     label: "Blog" # Used in the UI
     folder: "src/content/posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
