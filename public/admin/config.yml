@@ -43,4 +43,10 @@ collections:
           options:
             ["Code", "Personal-life", "Gaming", "Content", "Misc", "Projects"],
         }
+      - {
+          label: "Is Draft",
+          name: "isDraft",
+          widget: "boolean",
+          default: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
