@@ -45,6 +45,9 @@ export const socialButtons = [
   {
     name: "Github",
   },
+  {
+    name: "Rss",
+  },
 ];
 
 // Type safety stuff
