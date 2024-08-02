@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { type VideoInterface } from "@/lib/consts";
+import React from "react";
 
 interface Thumbnail {
   url: string;
@@ -34,11 +35,16 @@ function getBiggestThumbnail(thumbnails: Thumbnails): string | null {
   } else if (thumbnails.default) {
     return thumbnails.default.url;
   } else {
-    return null; // No thumbnails available
+    return null;
   }
 }
 
-export default function VideoCard(data: VideoInterface) {
+interface VideoCardTSXProps {
+  data: VideoInterface;
+  children: React.ReactNode;
+}
+
+export default function VideoCardTSX({ data, children }: VideoCardTSXProps) {
   const thumbnail = getBiggestThumbnail(data.thumbnails);
   const handleClick = (url: string) => {
     window.open(url, "_blank");
@@ -54,9 +60,7 @@ export default function VideoCard(data: VideoInterface) {
           {data.published.toString().slice(0, 15)}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <img src={thumbnail!} alt={data.title} className=" rounded-lg w-full" />
-      </CardContent>
+      <CardContent>{children}</CardContent>
       <CardFooter className="flex justify-between">
         <Button
           variant="outline"
@@ -64,7 +68,7 @@ export default function VideoCard(data: VideoInterface) {
             handleClick(`https://www.youtube.com/watch?v=${data.id}`)
           }
         >
-          Watch
+          Watch on YT
         </Button>
       </CardFooter>
     </Card>

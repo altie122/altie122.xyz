@@ -1,7 +1,8 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import VideoSortButtonsSuspense from '~/components/VideoSortButtons';
-import VideoCard from '@/components/VideoCard';
+import VideoCard from '~/components/VideoCard.astro';
+import type { VideoInterface } from '~/lib/consts';
 let by: string = Astro.params.by;
 let direction: string = Astro.params.direction;
 
@@ -90,8 +91,8 @@ const videos = sorted_videos[`${by}_${direction}`];
       <VideoSortButtonsSuspense client:only='react' by={by} direction={direction} />
     </div>
     <div class="grid grid-cols-1 gap-4">
-      {videos.map(video => 
-        <VideoCard id={video.id} title={video.title} description={video.description} views={video.views} likes={video.likes} published={video.published} thumbnails={video.thumbnails} client:only='react' />
+      {videos.map((video: VideoInterface) => 
+        <VideoCard data={video} />
       )}
     </div>
 	</main>

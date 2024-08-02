@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import VideoCard from '@/components/VideoCard';
+import VideoCard from '@/components/VideoCard.astro';
 import VideoSortButtonsSuspense from '~/components/VideoSortButtons';
 
 interface Video {
@@ -74,7 +74,7 @@ const videos = sorted_videos.date_desc;
     </div>
     <div class="grid grid-cols-1 gap-4">
       {videos.map(video => 
-        <VideoCard id={video.id} title={video.title} description={video.description} views={video.views} likes={video.likes} published={video.published} thumbnails={video.thumbnails} client:only='react' />
+        <VideoCard data={video} />
       )}
     </div>
 	</main>
