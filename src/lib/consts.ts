@@ -10,11 +10,11 @@ export const pages = [
     href: "/blog/",
     isExternal: false,
   },
-  {
-    name: "Video List",
-    href: "/videos",
-    isExternal: false,
-  },
+  // {
+  // name: "Video List",
+  // href: "/videos",
+  // isExternal: false,
+  // },
   // {
   //   name: "SoundBoard",
   //   href: "https://soundboard.altie122.xyz/",
