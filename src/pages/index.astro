@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from "astro:content";
+import { db, links } from 'astro:db';
+import LinksCard from '~/components/LinksCard';
 
 let allPosts = [...(await getCollection('posts', ({ data }) => {
   return data.isDraft !== true;
@@ -9,19 +11,22 @@ allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date
 let newestPost = allPosts![0];
 
 import { BlogCard } from "../components/BlogCard";
+
+const linksList = await db.select().from(links);
+
+// get random link
+const randomLink = linksList[Math.floor(Math.random() * linksList.length)];
+
 ---
 
 <Layout title="Home" description='Altie122' page="/">
 	<main class="prose">
 		<h1>Altie122</h1>
 		<h2>Links:</h2>
-		<ul>
-			<li><a href="https://github.com/Altie122">Github (personal)</a></li>
-			<li><a href="https://github.com/Altie122-youtube">Github (Channel related)</a></li>
-			<li><a href="https://www.youtube.com/@altie122">Youtube Channel</a></li>
-			<li><a href="https://www.twitch.tv/altie122">Twitch Channel</a></li>
-			<li><a href='https://discord.gg/UmNRqRUpRe'>Discord Server</a></li>
-		</ul>
+		<p>Links have moved to the <a href="/links">Links</a> page.</p>
+		<br />
+		<h3>Recommended:</h3>
+		<LinksCard link={randomLink} isAdmin={false} client:only="react" />
 		<h2>Projects:</h2>
 		<ul>
 			<li><a href="https://yt-to-ytnocookie.xyz/">yt-to-ytnocookie</a></li>

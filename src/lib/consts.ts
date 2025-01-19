@@ -10,6 +10,11 @@ export const pages = [
     href: "/blog/",
     isExternal: false,
   },
+  {
+    name: "Links",
+    href: "/links",
+    isExternal: false,
+  },
   // {
   // name: "Video List",
   // href: "/videos",
