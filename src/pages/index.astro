@@ -20,21 +20,27 @@ const randomLink = linksList[Math.floor(Math.random() * linksList.length)];
 ---
 
 <Layout title="Home" description='Altie122' page="/">
-	<main class="prose">
-		<h1>Altie122</h1>
-		<h2>Links:</h2>
-		<p>Links have moved to the <a href="/links">Links</a> page.</p>
-		<br />
-		<h3>Recommended:</h3>
-		<LinksCard link={randomLink} isAdmin={false} client:only="react" />
-		<h2>Projects:</h2>
-		<ul>
-			<li><a href="https://yt-to-ytnocookie.xyz/">yt-to-ytnocookie</a></li>
-		</ul>
-		<h2>Newest Blog Post:</h2>
-		<br />
-		{
-			newestPost && <BlogCard url={"/blog/posts/" + newestPost.slug} title={newestPost.data.title} image={newestPost.data.image} date={newestPost.data.pubDate} author={newestPost.data.author} description={newestPost.data.description} client:only="react" />
-		}
+	<main>
+		<div class="prose-no-y-padding pt-8">
+			<h1>Altie122</h1>
+			<h2>Links:</h2>
+			<p>Links have moved to the <a href="/links">Links</a> page.</p>
+			<br />
+			<h3>Recommended:</h3>
+		</div>
+		<div class="prose-container-no-y-padding">
+			<LinksCard link={randomLink} isAdmin={false} client:only="react" />
+		</div>
+		<div class="prose pb-16">
+			<h2>Projects:</h2>
+			<ul>
+				<li><a href="https://yt-to-ytnocookie.xyz/">yt-to-ytnocookie</a></li>
+			</ul>
+			<h2>Newest Blog Post:</h2>
+			<br />
+			{
+				newestPost && <BlogCard url={"/blog/posts/" + newestPost.slug} title={newestPost.data.title} image={newestPost.data.image} date={newestPost.data.pubDate} author={newestPost.data.author} description={newestPost.data.description} client:only="react" />
+			}
+		</div>
 	</main>
 </Layout>
