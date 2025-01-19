@@ -8,6 +8,10 @@ import mdx from "@astrojs/mdx";
 
 import url122 from "@url122/astro";
 
+import db from "@astrojs/db";
+
+import clerk from "@clerk/astro";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.altie122.xyz",
@@ -19,8 +23,11 @@ export default defineConfig({
     react(),
     mdx(),
     url122({ prefix: "122" }),
+    db(),
+    clerk(),
   ],
   adapter: netlify(),
+  output: "server",
   redirects: {
     "/posts/[...slug]": "/blog/posts/[...slug]",
     "/tags/[tag]": "/blog/tags/[tag]",

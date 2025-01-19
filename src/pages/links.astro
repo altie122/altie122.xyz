@@ -1,0 +1,104 @@
+---
+import LinksForm from '~/components/LinksForm';
+import Layout from '../layouts/Layout.astro';
+import { db, links, eq } from 'astro:db';
+import LinksCard from '~/components/LinksCard';
+
+const linksList = await db.select().from(links);
+
+const currentUser = await Astro.locals.currentUser()
+
+let isAdmin = false;
+if (currentUser && currentUser.publicMetadata && currentUser.publicMetadata.permissions && currentUser.publicMetadata.permissions == 'admin') {
+  isAdmin = true;
+}
+
+if (Astro.request.method === 'POST') {
+  const user = await Astro.locals.currentUser();
+  if (user?.publicMetadata?.permissions !== 'admin') {
+    throw new Error('You must be signed in and an admin to use this feature');
+  }
+
+  const data = await Astro.request.formData();
+  const method = data.get('method');
+
+  if (method === 'POST') {
+    const title = String(data.get('title')).trim();
+    const url = String(data.get('url')).trim();
+    const description = String(data.get('description')).trim();
+    const icon = data.get('icon') ? String(data.get('icon')).trim() : null;
+
+    if (!title || !url || !description) {
+      throw new Error('All fields are required');
+    }
+    if (icon && !icon.startsWith('https://')) {
+      throw new Error('Icon must be a valid URL');
+    }
+
+    if (icon) {
+      await db.insert(links).values({
+        title,
+        url,
+        description,
+        icon,
+      });
+    } else {
+      await db.insert(links).values({
+        title,
+        url,
+        description,
+      });
+    }
+
+    return Astro.redirect('/links');
+  } else if (method === 'DELETE') {
+    const id = Number(data.get('id'));
+    if (isNaN(id)) {
+      throw new Error('ID is missing or invalid');
+    }
+
+    await db.delete(links).where(eq(links.id, id));
+    return Astro.redirect('/links');
+  }
+}
+
+---
+{
+  isAdmin ? (
+<Layout title="Links" description="Links" page="links">
+  <main class="container mx-auto py-4">
+    <h1 class="text-3xl font-bold">Links</h1>
+    <br/>
+    <hr/>
+    <br/>
+      <LinksForm client:only="react" />
+    <br/>
+    <hr/>
+    <br/>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-4 bg-accent-foreground/10 rounded-lg">
+      {
+        linksList.map((link) => (
+          <LinksCard link={link} isAdmin={isAdmin} client:only="react" />
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+  ) : (
+  <Layout title="Links" description="Links" page="links">
+  <main class="container mx-auto">
+    <h1 class="text-3xl font-bold">Links</h1>
+    <br/>
+    <hr/>
+    <br/>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-4 bg-accent-foreground/10 rounded-lg">
+      {
+        linksList.map((link) => (
+          <LinksCard link={link} isAdmin={isAdmin} client:only="react" />
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+  )
+}

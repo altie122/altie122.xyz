@@ -1,5 +1,6 @@
 import type React from "react";
 import { Button } from "./ui/button";
+import type { JSX } from "react";
 
 export type SocialType =
   | "Discord"
