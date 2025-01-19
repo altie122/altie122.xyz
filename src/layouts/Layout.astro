@@ -37,12 +37,12 @@ import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/astro/comp
 	</head>
 	<body>
 		<Header client:only="react">
-			<SignedOut>
+			<!-- <SignedOut>
 				<SignInButton mode="modal" />
 			</SignedOut>
 			<SignedIn>
 				<UserButton />
-			</SignedIn>
+			</SignedIn> -->
 		</Header>
 		<div class="min-h-screen">
 			<slot />
