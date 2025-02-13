@@ -36,4 +36,9 @@ export default defineConfig({
   legacy: {
     collections: true,
   },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });

@@ -5,7 +5,7 @@ import { db, links } from 'astro:db';
 import LinksCard from '~/components/LinksCard';
 
 let allPosts = [...(await getCollection('posts', ({ data }) => {
-  return data.isDraft !== true;
+  return data.isDraft !== true || data.isHidden !== true;
 }))];
 allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 let newestPost = allPosts![0];
