@@ -26,6 +26,11 @@ export const pages = [
   //   isExternal: true,
   // },
   {
+    name: "The Canvas",
+    href: "https://thecanvas.altie122.xyz",
+    isExternal: true,
+  },
+  {
     name: "Minecraft Mods",
     href: "https://mods.altie122.xyz/",
     isExternal: true,
