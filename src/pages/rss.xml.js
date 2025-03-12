@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 export async function GET(context) {
   const posts = [
     ...(await getCollection("posts", ({ data }) => {
-      return data.isDraft !== true;
+      return data.isDraft !== true && data.isHidden !== true;
     })),
   ];
   return rss({

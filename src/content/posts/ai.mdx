@@ -1,0 +1,141 @@
+---
+title: "AI"
+pubDate: 2025-03-12
+description: "My viewpoint on AI... Its not great."
+author: "Altie"
+image:
+  url: "/assets/images/blog/ai/default-thumbnail.png"
+  alt: "Channel Banner"
+tags: ["Content"]
+isDraft: true
+---
+
+import { Banner } from "@/components/Blog/Banner";
+import { Code, solarizedDark } from "react-code-blocks";
+
+<br />
+
+<Banner title="Notice" type="Info">
+  Although I try to keep this blog semi-professional, this is not a professional
+  post. This is a personal opinion, written in a way that I would use in a
+  video. If you, for whatever reason, want to make content on this post, I will
+  have a clean version [here](/blog/posts/ai-clean) if you would like to have a
+  version that doesn't contain any profanity.
+</Banner>
+
+<br />
+
+<Banner title="Note" type="Warning">
+  Please note that this post is written by, as of the time of writing, a 17 year
+  old high school student. I do have plenty of experience with AI, but I'm not a
+  professional nor claim to be. I just want to share my opinion on the topic,
+  and vent a bit.
+</Banner>
+
+AI, the current corporate buzzword... Laptops with the biggest selling point being Copilot or Apple Intelligence, Phones needing to use Gemini or Siri with Apple Intelligence to be the newest big thing, Social Media being filled with AI-generated bullshit, AI companies considering ways to poison your artwork to protect it from being used to train AI as Abuse or Assault. AI is just a fucked up buzzword now. It's not great. But it's not bad either.
+
+## Why do I say it's fucked up?
+
+It is. AI is a cool thing in concept, but it is built on stolen works and ideas, plus it has a lot of issues. And I'm not saying this as someone who doesn't use AI, I do, hell I have a code helping AI in my VSC. I use and pay for t3.chat, I use AI all the time, but not because AI is the future and the best thing ever. I have seen why it's bad, I'm just a high school student, and given the stuff I've seen at school, I can't imagine what it's like in work places. You also can't escape AI either as companies are shoving it down your throat faster than a competitive eater guzzling down hot dogs.
+
+## Why don't I like AI?
+
+It's built on stolen works, that's the main idea, though I'll get into that later when I talk about generative art/image AI's. AI is also making people dumber, yeah, I'm going there.
+
+AI has been making people stop using critical thinking, people just say "hey, do **\_**" or "what is **\_**" or if you decide to use google or another search engine, you'll be force-fed AI-generated results. It has gone as far as telling you to [use non-toxic glue to keep cheese on your pizza](https://www.theverge.com/2024/5/23/24162896/google-ai-overview-hallucinations-glue-in-pizza), and it's only going to get worse as AI keeps being feed AI-generated bullshit.
+
+## Why do I like AI?
+
+I do like and use AI a bit, but it still has its issues. I use it as a tool, something to help, to check my grammar or help me fix a bug in some code. It's a useful tool, when used as a tool. Hell I used Claude 3.7 Sonnet (Reasoning) through t3.chat to help grammar check this post.
+
+## AI in programming
+
+I will mostly be speaking on this topic through the context of my experience with using AI to program, and seeing AI used in programming classes. I don't like the idea of using AI to make your program, it's an amazing tool to help you program or fix bugs, but it's not what should be programming for you.
+
+I have experience with this from a more experienced programmer's perspective, in one of the programming classes at the high school I go to (specifically a Web Development class). I am in a way the project lead/senior developer for a rewrite of the student news website (moving from Wordpress to an Astro based website), and although I have written almost every line of code I've committed into the repository by hand, I have a classmate who claims to know how to program for the site, then uses AI for everything.
+
+Here is an image of the current main page that they (aka the AI wrote) compared to a page I wrote using the style system we use (Shadcn/ui): (all information relating to the school has been blocked out as to protect me and the school.)
+
+![AI generated page](/assets/images/blog/ai/aivswritten.png)
+
+Although the AI page has more visible items, you can clearly see the difference. The code for the AI that I will not be showing is worse than the difference in design, the code uses local storage for the "recent stories" (I have made query APIs internally to get information from our DB but they didn't give any context to chatGPT other than that it is for a news/student news site (I don't have the exact prompt they used sadly)).
+
+This is one of the biggest issues with AI. AI is over trusted making the code base worse (I really wanted to deny the PR but didn't want to be the bad guy (the person also likes to take control of the project and I wasn't going to fight with them)).
+
+I can't stand using AI in coding, plus, it will (realistically) kill itself in the future as the AI companies use AI-generated code to train the AI, any bugs will start being seen as how the AI should generate code, and it will eventually kill itself due to this.
+
+## Art/Image AI
+
+If you dont like curses, go to the clean version for this section, its going to get dirty here...
+
+I fucking hate AI image generation. There are so many issues with it, like the fact they dont get the rights to the content, nor give credit... oh wait, you're telling me that multiple (corporate) creative suites have clauses in their ToS that gives the company full unrestricted rights to \***\*your\*\*** art work?
+
+Wait, so they can use your artwork and images to train AI? thats all likely just conspiracies... right?
+
+AI image generation is a fucking nightmare to artists, and yet the AI companies complain when you try to protect your work? Calling tools like Glaze and Nightshade "abuse", as seen in an article from the MIT Technology Review when they asked OpenAI about the poisoning, OpenAI said "We are always working on how we can make our systems more robust against this type of abuse."
+
+This shows that tools like Glaze and Nightshade are likely working. We need more of these tools, and we need more use of these tools. If we fight back then we can make a change... given the giant fucking corporations feel something...
+
+## AI in school
+
+As a student myself, I have seen this, though I rarely use AI for school. In the cases I do, it is as a tool, with permission from the teacher. But I'm not going into AI in school right now, that needs a post all to itself.
+
+## Why do I bring this up?
+
+I'm done seeing AI being used. you can't scroll just a few videos/posts on any platform without seeing AI-generated slop. And I think we need to do something about this. Of course I'm just some random (at the time of writing this) 17 year old so no one is likely to take any of this seriously. AI isn't going anywhere, that's a given, but I think I have ideas that we, as consumers should push for to make AI more ethical.
+
+## What can we do?
+
+We need to push for more ethical practices, I propose the following:
+
+### The Internet
+
+We need to make it easier to stop AI and AI information collection from being able to scrape our websites. I propose the following:
+
+- We need standards other than robots.txt or Cloudflare's tools to stop AI from scraping our websites, such as a new meta tag standard, something like this:
+
+<Code
+  text={`<meta name="ai" content="off">`}
+  theme={solarizedDark}
+  language="html"
+/>
+
+This would (given it was to be used by all AI companies, though I doubt even one company would honor it as they have (specifically OpenAI) admitted to "needing" copyrighted material to make their AIs) stop AI from scraping our websites, to enable scraping, you would need to specifically enable it, by default it should be read as `off`, like this:
+
+<Code
+  text={`<meta name="ai" content="on">`}
+  theme={solarizedDark}
+  language="html"
+/>
+
+### Art and video
+
+For art and video we need to make it opt-in like above, and have the ability to require credit and (possibly) royalties for works used.
+
+This is where tools like nightshade and glaze are good, it can end up pressuring AI companies to take artists and content creators into account. But thinking realistically they will just find ways to counteract it.
+
+## Closing
+
+But again, I'm just a random 17 year old, I have no say in the world, nor am I an expert.
+
+Thank you for reading,\
+\
+Have a good day/night!\
+Altie122
+
+Related/Useful links:
+
+- [t3.chat](https://t3.chat) (I am not affiliated with t3.chat it's just the best AI client I've used)
+
+Sources:
+
+- https://80.lv/articles/openai-describes-artists-use-of-glaze-nightshade-as-abuse
+- https://www.theverge.com/2024/5/23/24162896/google-ai-overview-hallucinations-glue-in-pizza
+- https://www.technologyreview.com/2024/11/13/1106837/ai-data-posioning-nightshade-glaze-art-university-of-chicago-exploitation/
+- https://www.technologyreview.com/2023/10/23/1082189/data-poisoning-artists-fight-generative-ai/
+- I'm sure I have missed a lot, but I will update this post with more links as I find them.
+
+Glaze and Nightshade's links (please, if you are an artist, look into these tools, they can help you protect your work):
+
+- [Glaze](https://glaze.cs.uchicago.edu/)
+- [Nightshade](https://nightshade.cs.uchicago.edu/)

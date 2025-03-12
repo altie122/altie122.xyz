@@ -46,6 +46,24 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        warning: {
+          DEFAULT: "oklab(var(--warning-background))",
+          lines: "oklab(var(--warning-background-lines))",
+          border: "oklab(var(--warning-border))",
+          foreground: "oklab(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "oklab(var(--info-background))",
+          lines: "oklab(var(--info-background-lines))",
+          border: "oklab(var(--info-border))",
+          foreground: "oklab(var(--info-foreground))",
+        },
+        caution: {
+          DEFAULT: "oklab(var(--caution-background))",
+          lines: "oklab(var(--caution-background-lines))",
+          border: "oklab(var(--caution-border))",
+          foreground: "oklab(var(--caution-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,4 +87,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

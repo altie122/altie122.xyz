@@ -24,6 +24,18 @@
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
+    --warning-background: 85% 0.3 0.1;
+    --warning-background-lines: 75% 0.3 0.1;
+    --warning-border: 55% 0.3 0.1;
+    --warning-foreground: 15% 0.3 0.1;
+    --info-background: 85% -0.1 -0.2;
+    --info-background-lines: 75% -0.1 -0.2;
+    --info-border: 55% -0.1 -0.2;
+    --info-foreground: 15% -0.1 -0.2;
+    --caution-background: 85% 0.1 0.2;
+    --caution-background-lines: 75% 0.1 0.2;
+    --caution-border: 55% 0.1 0.2;
+    --caution-foreground: 15% 0.1 0.2;
   }
 
   .dark {
@@ -46,6 +58,18 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
+    --warning-background: 15% 0.3 0.1;
+    --warning-background-lines: 25% 0.3 0.1;
+    --warning-border: 55% 0.3 0.1;
+    --warning-foreground: 85% 0.3 0.1;
+    --info-background: 15% -0.1 -0.2;
+    --info-background-lines: 25% -0.1 -0.2;
+    --info-border: 55% -0.1 -0.2;
+    --info-foreground: 85% -0.1 -0.2;
+    --caution-background: 15% 0.1 0.2;
+    --caution-background-lines: 25% 0.1 0.2;
+    --caution-border: 55% 0.1 0.2;
+    --caution-foreground: 85% 0.1 0.2;
   }
 }
 
@@ -59,6 +83,24 @@
 }
 
 @layer utilities {
+  .bg-diagonal-lines-warning {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6"><g fill="currentColor"><polygon points="5 0 6 0 0 6 0 5"></polygon><polygon points="6 5 6 6 5 6"></polygon></g></svg>');
+    background-repeat: repeat;
+    background-size: 24px 24px;
+    @apply text-warning-lines;
+  }
+  .bg-diagonal-lines-info {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6"><g fill="currentColor"><polygon points="5 0 6 0 0 6 0 5"></polygon><polygon points="6 5 6 6 5 6"></polygon></g></svg>');
+    background-repeat: repeat;
+    background-size: 24px 24px;
+    @apply text-info-lines;
+  }
+  .bg-diagonal-lines-caution {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6"><g fill="currentColor"><polygon points="5 0 6 0 0 6 0 5"></polygon><polygon points="6 5 6 6 5 6"></polygon></g></svg>');
+    background-repeat: repeat;
+    background-size: 24px 24px;
+    @apply text-caution-lines;
+  }
   .prose,
   .prose-container {
     @apply container mx-auto px-4 pt-8 pb-16 sm:px-6 lg:px-8 max-w-[1024px];
