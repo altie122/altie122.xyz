@@ -5,6 +5,7 @@ import { db, links, projects } from 'astro:db';
 import LinksCard from '~/components/LinksCard';
 import { BlogCard } from "../components/BlogCard";
 import { ProjectsCard } from '~/components/ProjectsCard';
+import { Banner } from '~/components/Blog/Banner';
 
 let allPosts = [...(await getCollection('posts', ({ data }) => {
   return data.isDraft !== true && data.isHidden !== true;
@@ -23,6 +24,9 @@ const randomProject = projectsList[Math.floor(Math.random() * projectsList.lengt
 <Layout title="Home" description='Altie122' page="/">
 	<main>
 		<div class="prose-no-y-padding pt-8">
+			<Banner title="Known Bug" type="Info">
+				<p class="prose-h3">I am aware of how slow the website is after "Projects" were added, I am working on fixing this issue. Sorry for the inconvenience.</p>
+			</Banner>
 			<h1>Altie122</h1>
 			<h2>Links:</h2>
 			<p>Links have moved to the <a href="/links">Links</a> page.</p>

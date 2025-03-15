@@ -1,24 +1,38 @@
+import {
+  Box,
+  Home,
+  Link,
+  Newspaper,
+  Package,
+  Palette,
+  TvMinimalPlay,
+} from "lucide-react";
+
 export const pages = [
   // All STATIC pages, dynamic pages like blog posts are not included here
   {
     name: "Home",
     href: "/",
     isExternal: false,
+    icon: Home,
   },
   {
     name: "Blog",
     href: "/blog/",
     isExternal: false,
+    icon: Newspaper,
   },
   {
     name: "Links",
     href: "/links",
     isExternal: false,
+    icon: Link,
   },
   {
     name: "Projects",
     href: "/projects",
     isExternal: false,
+    icon: Package,
   },
   // {
   // name: "Video List",
@@ -34,16 +48,19 @@ export const pages = [
     name: "The Canvas",
     href: "https://thecanvas.altie122.xyz",
     isExternal: true,
+    icon: Palette,
   },
   {
     name: "Minecraft Mods",
     href: "https://mods.altie122.xyz/",
     isExternal: true,
+    icon: Box,
   },
   {
     name: "YT to YT No Cookie",
     href: "https://yt-to-ytnocookie.altie122.xyz/",
     isExternal: true,
+    icon: TvMinimalPlay,
   },
 ];
 
