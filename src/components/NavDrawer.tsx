@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
+} from "@/components/ui/drawer";
 import { pages, socialButtons } from "~/lib/consts";
 import { SocialButtons, type SocialType } from "./SocialButtons";
 
@@ -19,7 +19,9 @@ export function NavDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" size={'icon'}><Menu /></Button>
+        <Button variant="outline" size={"icon"}>
+          <Menu />
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
@@ -27,31 +29,39 @@ export function NavDrawer() {
             <DrawerTitle>Navigation</DrawerTitle>
           </DrawerHeader>
           <div className="p-4 flex flex-wrap gap-2">
-            {
-			      	pages.map((data) => (
-                data.isExternal ? (
-                  <Button variant={'outline'} onClick={() => handleClick(data.href)} key={data.href}><span className="after:content-['_↗']">{data.name}</span></Button>
-                ) : (
-                  <Button variant={'outline'} onClick={() => handleClick(data.href)} key={data.href}>{data.name}</Button>
-                )
-			      	))
-			      }
+            {pages.map((data) =>
+              data.isExternal ? (
+                <Button
+                  variant={"outline"}
+                  onClick={() => handleClick(data.href)}
+                  key={data.href}
+                >
+                  <span className="after:content-['_↗']">{data.name}</span>
+                </Button>
+              ) : (
+                <Button
+                  variant={"outline"}
+                  onClick={() => handleClick(data.href)}
+                  key={data.href}
+                >
+                  {data.name}
+                </Button>
+              ),
+            )}
           </div>
           <hr />
           <div className="p-4 pb-0 flex flex-wrap gap-2">
-            {
-			      	socialButtons.map((data) => (
-                <SocialButtons social={data.name as SocialType}  />
-			      	))
-			      }
+            {socialButtons.map((data) => (
+              <SocialButtons social={data.name as SocialType} key={data.name} />
+            ))}
           </div>
           <DrawerFooter>
             <DrawerClose asChild>
               <Button variant="outline">Close</Button>
             </DrawerClose>
-          </DrawerFooter> 
+          </DrawerFooter>
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
