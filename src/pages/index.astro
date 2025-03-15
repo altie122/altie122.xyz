@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from "astro:content";
-import { db, links } from 'astro:db';
+import { db, links, projects } from 'astro:db';
 import LinksCard from '~/components/LinksCard';
+import { BlogCard } from "../components/BlogCard";
+import { ProjectsCard } from '~/components/ProjectsCard';
 
 let allPosts = [...(await getCollection('posts', ({ data }) => {
   return data.isDraft !== true && data.isHidden !== true;
@@ -10,12 +12,11 @@ let allPosts = [...(await getCollection('posts', ({ data }) => {
 allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 let newestPost = allPosts![0];
 
-import { BlogCard } from "../components/BlogCard";
-
 const linksList = await db.select().from(links);
+const projectsList = await db.select().from(projects);
 
-// get random link
 const randomLink = linksList[Math.floor(Math.random() * linksList.length)];
+const randomProject = projectsList[Math.floor(Math.random() * projectsList.length)];
 
 ---
 
@@ -26,16 +27,21 @@ const randomLink = linksList[Math.floor(Math.random() * linksList.length)];
 			<h2>Links:</h2>
 			<p>Links have moved to the <a href="/links">Links</a> page.</p>
 			<br />
-			<h3>Recommended:</h3>
+			<h3>Here is one to check out:</h3>
 		</div>
 		<div class="prose-container-no-y-padding">
 			<LinksCard link={randomLink} isAdmin={false} client:only="react" />
 		</div>
-		<div class="prose pb-16">
+		<div class="prose-no-y-padding">
 			<h2>Projects:</h2>
-			<ul>
-				<li><a href="https://yt-to-ytnocookie.altie122.xyz/">yt-to-ytnocookie</a></li>
-			</ul>
+			<p>Projects have moved to the <a href="/projects">Projects</a> page.</p>
+			<br />
+			<h3>Here is one to check out:</h3>
+		</div>
+		<div class="prose-container-no-y-padding">
+			<ProjectsCard project={randomProject} isAdmin={false} client:only="react" />
+		</div>
+		<div class="prose pb-16">
 			<h2>Newest Blog Post:</h2>
 			<br />
 			{

@@ -10,9 +10,17 @@ const links = defineTable({
   },
 });
 
+const projects = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    url: column.text(),
+  },
+});
+
 // https://astro.build/db/config
 export default defineDb({
   tables: {
     links,
+    projects,
   },
 });

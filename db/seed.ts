@@ -1,4 +1,4 @@
-import { db, links } from "astro:db";
+import { db, links, projects } from "astro:db";
 
 // https://astro.build/db/seed
 export default async function seed() {
@@ -23,6 +23,12 @@ export default async function seed() {
       description:
         "Follow me on GitHub to get updates on my latest projects and tutorials.",
       icon: "https://www.altie122.xyz/icon.png",
+    },
+  ]);
+
+  await db.insert(projects).values([
+    {
+      url: "https://yt-to-ytnocookie.altie122.xyz/",
     },
   ]);
 }

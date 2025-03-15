@@ -1,10 +1,10 @@
 ---
-import LinksForm from '~/components/LinksForm';
+import ProjectsForm from '~/components/ProjectsForm';
 import Layout from '../layouts/Layout.astro';
-import { db, links, eq } from 'astro:db';
-import LinksCard from '~/components/LinksCard';
+import { db, eq, projects } from 'astro:db';
+import {ProjectsCard} from '~/components/ProjectsCard';
 
-const linksList = await db.select().from(links);
+const projectsList = await db.select().from(projects);
 
 const currentUser = await Astro.locals.currentUser()
 
@@ -23,95 +23,71 @@ if (Astro.request.method === 'POST') {
   const method = data.get('method');
 
   if (method === 'POST') {
-    const title = String(data.get('title')).trim();
     const url = String(data.get('url')).trim();
-    const description = String(data.get('description')).trim();
-    const icon = data.get('icon') ? String(data.get('icon')).trim() : null;
     const mode = data.get('mode');
-
-    if (!title || !url || !description) {
-      throw new Error('All fields are required');
-    }
-    if (icon && !icon.startsWith('https://')) {
-      throw new Error('Icon must be a valid URL');
-    }
 
     if (mode === 'edit') {
       const id = Number(data.get('id'));
-      if (!id && isNaN(id) || !icon) {
+      if (!id && isNaN(id)) {
         throw new Error('ID is missing or invalid');
       } else {
-        await db.update(links).set({
-          title,
+        await db.update(projects).set({
           url,
-          description,
-          icon,
-        }).where(eq(links.id, id));
+        }).where(eq(projects.id, id));
       }
-      return Astro.redirect('/links');
+      return Astro.redirect('/projects');
     }
     
 
-    if (icon) {
-      await db.insert(links).values({
-        title,
+      await db.insert(projects).values({
         url,
-        description,
-        icon,
       });
-    } else {
-      await db.insert(links).values({
-        title,
-        url,
-        description,
-      });
-    }
 
-    return Astro.redirect('/links');
+    return Astro.redirect('/projects');
   } else if (method === 'DELETE') {
     const id = Number(data.get('id'));
     if (isNaN(id)) {
       throw new Error('ID is missing or invalid');
     }
 
-    await db.delete(links).where(eq(links.id, id));
-    return Astro.redirect('/links');
+    await db.delete(projects).where(eq(projects.id, id));
+    return Astro.redirect('/projects');
   }
 }
 
 ---
 {
   isAdmin ? (
-<Layout title="Links" description="Links" page="links">
+<Layout title="Projects" description="Projects" page="projects">
   <main class="container mx-auto py-4">
-    <h1 class="text-3xl font-bold">Links</h1>
+    <h1 class="text-3xl font-bold">Projects</h1>
     <br/>
     <hr/>
     <br/>
-      <LinksForm client:only="react" />
+      <ProjectsForm client:only="react" />
     <br/>
     <hr/>
     <br/>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-4 bg-accent-foreground/10 rounded-lg">
       {
-        linksList.map((link) => (
-          <LinksCard link={link} isAdmin={isAdmin} client:only="react" />
+        projectsList.map((project) => (
+          <ProjectsCard project={project} isAdmin={isAdmin} client:only="react" />
         ))
       }
     </div>
   </main>
 </Layout>
   ) : (
-  <Layout title="Links" description="Links" page="links">
+  <Layout title="Projects" description="Projects" page="projects">
   <main class="container mx-auto">
-    <h1 class="text-3xl font-bold">Links</h1>
+    <h1 class="text-3xl font-bold">Projects</h1>
     <br/>
     <hr/>
     <br/>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-4 bg-accent-foreground/10 rounded-lg">
       {
-        linksList.map((link) => (
-          <LinksCard link={link} isAdmin={isAdmin} client:only="react" />
+        projectsList.map((project) => (
+          <ProjectsCard project={project} isAdmin={isAdmin} client:only="react" />
         ))
       }
     </div>

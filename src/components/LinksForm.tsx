@@ -5,14 +5,6 @@ import { useState } from "react";
 import { Textarea } from "./ui/textarea";
 import LinksCard from "./LinksCard";
 
-type Link = {
-  id: number;
-  title: string;
-  url: string;
-  description: string;
-  icon: string;
-};
-
 export default function LinksForm() {
   const [title, setTitle] = useState("Title");
   const [url, setUrl] = useState("URL");
