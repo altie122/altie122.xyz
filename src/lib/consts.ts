@@ -37,7 +37,7 @@ export const pages = [
   },
   {
     name: "YT to YT No Cookie",
-    href: "https://yt-to-ytnocookie.xyz/",
+    href: "https://yt-to-ytnocookie.altie122.xyz/",
     isExternal: true,
   },
 ];
