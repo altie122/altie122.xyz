@@ -548,4 +548,5 @@ img[src*="users/137259132305539072"]+.header_c19a55:hover::after {
 .content_a2f514 {
   background-color: rgba(var(--rgb-background), 0.5) !important;
   border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
