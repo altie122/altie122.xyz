@@ -225,7 +225,7 @@
   backdrop-filter: blur(var(--background-blur)) brightness(var(--background-brightness))
 }
 
-.theme-dark .appMount__51fd7,
+/* .theme-dark .appMount__51fd7, */
 .theme-dark .app__160d8,
 /* .theme-dark .bg__960e4, */
 .theme-dark .guilds_c48ade,
