@@ -226,6 +226,7 @@
 }
 
 .theme-dark .appMount__51fd7,
+.theme-dark .container_a2f514,
 .theme-dark .app__160d8,
 .theme-dark .bg__960e4,
 .theme-dark .guilds_c48ade,
@@ -544,6 +545,7 @@ img[src*="users/137259132305539072"]+.header_c19a55:hover::after {
   color: rgb(var(--rgb-highlight))
 }
 
-.container_a2f514 {
-  background-color:rgba(0, 0, 0, 0) !important;
+.content_a2f514 {
+  background-color: rgba(var(--rgb-background), 0.5) !important;
+  border-radius: 1rem;
 }
