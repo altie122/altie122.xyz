@@ -19,7 +19,6 @@ interface MetaData {
     width: string | null;
     height: string | null;
   };
-  versionId: string | null;
 }
 
 interface Project {
@@ -77,7 +76,6 @@ export function ProjectsCard({ isAdmin, project }: Props) {
           <CardHeader>
             <CardTitle>{metaData.title}</CardTitle>
             <CardDescription>{metaData.description}</CardDescription>
-            <CardDescription>Version ID: {metaData.versionId}</CardDescription>
           </CardHeader>
           <CardContent>
             <img
@@ -129,7 +127,6 @@ export function ProjectsCard({ isAdmin, project }: Props) {
       <CardHeader>
         <CardTitle>{metaData.title}</CardTitle>
         <CardDescription>{metaData.description}</CardDescription>
-        <CardDescription>Version ID: {metaData.versionId}</CardDescription>
       </CardHeader>
       <CardContent>
         <img

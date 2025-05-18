@@ -1,46 +1,58 @@
 ---
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
   page: string;
 }
 
 const { title, description, page } = Astro.props;
 
-const Title = title + ' | Altie122'
+const Title = title + " | Altie122";
 
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 
-import Head from '../components/head.astro';
-import Root from './Root';
-import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/astro/components";
+import Head from "../components/head.astro";
+import Root from "./Root";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/astro/components";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<script is:inline>
-			(function() {
-				const getThemePreference = () => {
-					if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-						return localStorage.getItem('theme');
-					}
-					return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				};
-				const theme = getThemePreference();
-				const isDark = theme === 'dark';
-				document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-			})();
-		</script>
-		<Head title={Title} description={description} page={page}/>
-	</head>
-	<body>
-		<Root client:only="react">
-			<div class="w-full px-2 md:pl-0 pb-2 h-[calc(100svh-4rem)] lg:h-[calc(100%-1rem)]">
-				<div class='flex flex-row bg-sidebar text-sidebar-foreground rounded-lg border border-sidebar-border shadow h-full overflow-y-scroll main-scroll'>
-					<slot />
-				</div>
-			</div>
-	</Root>
-	</body>
+<html lang='en'>
+  <head>
+    <script is:inline>
+      (function () {
+        const getThemePreference = () => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        };
+        const theme = getThemePreference();
+        const isDark = theme === "dark";
+        document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+      })();
+    </script>
+    <Head title={Title} description={description} page={page} />
+  </head>
+  <body>
+    <Root client:only='react'>
+      <div class='w-full p-2 pt-0'>
+        <div
+          class='flex flex-row main-scroll'
+        >
+          <slot />
+        </div>
+      </div>
+    </Root>
+  </body>
 </html>

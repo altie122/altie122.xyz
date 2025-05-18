@@ -1,5 +1,4 @@
-// @ts-nocheck it works trust
-import { JSDOM } from "jsdom";
+import * as cheerio from "cheerio";
 
 interface MetaData {
   title: string | null;
@@ -9,14 +8,8 @@ interface MetaData {
     width: string | null;
     height: string | null;
   };
-  versionId: string | null;
 }
 
-/**
- * Gets the metadata of a page
- * @param url url of the page
- * @returns MetaData object with the title, description, image, image size (object of width and height), and versionId of the page
- */
 export async function getMetaData(url: string): Promise<MetaData> {
   try {
     const response = await fetch(url, {
@@ -26,49 +19,53 @@ export async function getMetaData(url: string): Promise<MetaData> {
     });
     const html = await response.text();
 
-    const dom = new JSDOM(html);
-    const doc = dom.window.document;
+    const $ = cheerio.load(html);
+
+    // Build a map of meta tags for fast lookup
+    const metaMap: Record<string, string> = {};
+    $("meta").each((_, el) => {
+      const $el = $(el);
+      const property = $el.attr("property");
+      const name = $el.attr("name");
+      const content = $el.attr("content");
+      if (property && content) metaMap[property] = content;
+      if (name && content) metaMap[name] = content;
+    });
 
     const title =
-      doc.querySelector("title")?.textContent ||
-      doc.querySelector('meta[property="og:title"]')?.content ||
+      metaMap["og:title"] ||
+      $("title").first().text() ||
       null;
 
     const description =
-      doc.querySelector('meta[name="description"]')?.content ||
-      doc.querySelector('meta[property="og:description"]')?.content ||
+      metaMap["og:description"] ||
+      metaMap["description"] ||
       null;
 
     const image =
-      doc.querySelector('meta[property="og:image"]')?.content ||
-      doc.querySelector('meta[name="twitter:image"]')?.content ||
+      metaMap["og:image"] ||
+      metaMap["twitter:image"] ||
       null;
 
     const imageWidth =
-      doc.querySelector('meta[property="og:image:width"]')?.content ||
-      doc.querySelector('meta[name="twitter:image:width"]')?.content ||
+      metaMap["og:image:width"] ||
+      metaMap["twitter:image:width"] ||
       null;
 
     const imageHeight =
-      doc.querySelector('meta[property="og:image:height"]')?.content ||
-      doc.querySelector('meta[name="twitter:image:height"]')?.content ||
+      metaMap["og:image:height"] ||
+      metaMap["twitter:image:height"] ||
       null;
 
-    const versionId =
-      doc.querySelector('meta[name="versionId"]')?.content || null;
-
-    const metaData: MetaData = {
-      title: title,
-      description: description,
-      image: image,
+    return {
+      title,
+      description,
+      image,
       imageSize: {
         width: imageWidth,
         height: imageHeight,
       },
-      versionId: versionId,
     };
-
-    return metaData;
   } catch (error) {
     console.error("Error fetching or parsing the page:", error);
     return {
@@ -76,7 +73,6 @@ export async function getMetaData(url: string): Promise<MetaData> {
       description: null,
       image: null,
       imageSize: { width: null, height: null },
-      versionId: null,
-    }; // Return a default object with null values on error
+    };
   }
 }
