@@ -5,6 +5,7 @@ import {
   Newspaper,
   Package,
   Palette,
+  PlaySquare,
   TvMinimalPlay,
 } from "lucide-react";
 
@@ -44,12 +45,12 @@ export const pages = [
   //   href: "https://soundboard.altie122.xyz/",
   //   isExternal: true,
   // },
-  {
-    name: "The Canvas",
-    href: "https://thecanvas.altie122.xyz",
-    isExternal: true,
-    icon: Palette,
-  },
+  // {
+  //   name: "The Canvas",
+  //   href: "https://thecanvas.altie122.xyz",
+  //   isExternal: true,
+  //   icon: Palette,
+  // },
   {
     name: "Minecraft Mods",
     href: "https://mods.altie122.xyz/",
@@ -59,6 +60,12 @@ export const pages = [
   {
     name: "YT to YT No Cookie",
     href: "https://yt-to-ytnocookie.altie122.xyz/",
+    isExternal: true,
+    icon: PlaySquare,
+  },
+  {
+    name: "DrigonFlow",
+    href: "https://drigonflow.xyz/",
     isExternal: true,
     icon: TvMinimalPlay,
   },

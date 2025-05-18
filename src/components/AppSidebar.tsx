@@ -68,7 +68,13 @@ export function AppSidebar() {
                       <SidebarMenuButton asChild>
                         <a href={item.href}>
                           <item.icon />
-                          <span>{item.name}</span>
+                          {
+                            item.isExternal ? (
+                              <span className="after:content-['_↗']">{item.name}</span>
+                            ) : (
+                              <span>{item.name}</span>
+                            )
+                          }
                         </a>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
