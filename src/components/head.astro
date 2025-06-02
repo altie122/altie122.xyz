@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 export interface Props {
 	title: string;
 	description: string;
@@ -15,7 +17,7 @@ const link_banner = domain + '/banner.jpg'
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta charset="UTF-8" />
 <meta name="description" content={description}>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/png" href='/icon.ico' />
 <meta name="generator" content={Astro.generator} />
 <link rel="manifest" href="/manifest.webmanifest" />
@@ -45,3 +47,4 @@ const link_banner = domain + '/banner.jpg'
 <link rel="apple-touch-startup-image" href='/banner.jpg'>
 <meta name="apple-mobile-web-app-title" content={title}>
 <link rel="alternate" type="application/rss+xml" title="Your Site's Title" href={new URL("rss.xml", Astro.site)}/>
+<ClientRouter />

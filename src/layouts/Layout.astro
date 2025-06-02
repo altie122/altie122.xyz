@@ -19,6 +19,8 @@ import {
   UserButton,
   SignInButton,
 } from "@clerk/astro/components";
+
+const currentPage = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -45,8 +47,8 @@ import {
     <Head title={Title} description={description} page={page} />
   </head>
   <body>
-    <Root client:only='react'>
-      <div class='w-full p-2 pt-0'>
+    <Root currentPage={currentPage} client:only='react'>
+      <div class='w-full p-2'>
         <div
           class='main-scroll'
         >
