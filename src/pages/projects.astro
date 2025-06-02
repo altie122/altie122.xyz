@@ -61,9 +61,6 @@ if (Astro.request.method === 'POST') {
   isAdmin ? (
 <Layout title="Projects" description="Projects" page="projects">
   <main class="container mx-auto py-4">
-      <Banner title="Known Bug" type="Info">
-				<p class="prose-h3">I am aware of how slow the website is after "Projects" were added, I am working on fixing this issue. Sorry for the inconvenience.</p>
-			</Banner>
     <h1 class="text-3xl font-bold">Projects</h1>
     <br/>
     <hr/>
@@ -84,9 +81,6 @@ if (Astro.request.method === 'POST') {
   ) : (
   <Layout title="Projects" description="Projects" page="projects">
   <main class="container mx-auto">
-      <Banner title="Known Bug" type="Info">
-			  <p class="prose-h3">I am aware of how slow the website is after "Projects" were added, I am working on fixing this issue. Sorry for the inconvenience.</p>
-		  </Banner>
     <h1 class="text-3xl font-bold">Projects</h1>
     <br/>
     <hr/>
