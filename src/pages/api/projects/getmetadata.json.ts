@@ -24,7 +24,7 @@ export const GET: APIRoute = async ({ request }) => {
     const currentDomain = currentUrl.hostname;
 
     // Compare the domains
-    if (refererDomain !== currentDomain) {
+    if (refererDomain !== currentDomain && refererDomain !== "altonrose.dev") {
       return new Response(
         JSON.stringify({ error: "Referer domain does not match" }),
         {
