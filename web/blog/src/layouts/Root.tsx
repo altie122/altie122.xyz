@@ -1,8 +1,10 @@
 import { SidebarProvider } from "@workspace/ui/components/sidebar";
 import { AppSidebar } from "~/components/AppSidebar";
 import * as React from "react";
-import Navbar from "@/components/NavBar";
-import { BottomNav } from "~/components/bottom-nav";
+import Navbar from "@workspace/ui/components/NavBar";
+import { ModeToggle } from "~/components/ModeToggle";
+import { BottomNav } from "@workspace/ui/components/bottom-nav";
+import "@workspace/ui/globals.css";
 // import Progress from "./progressbar";
 
 const Progress = () => {
@@ -28,9 +30,9 @@ export default function Layout({ children, currentPage }: LayoutProps) {
       <Progress />
       <AppSidebar />
       <main className="flex flex-col w-full min-h-dvh">
-        <Navbar />
+        <Navbar ModeToggle={<ModeToggle />} />
         {children}
-        <BottomNav currentPage={currentPage} />
+        <BottomNav  />
       </main>
     </SidebarProvider>
   );

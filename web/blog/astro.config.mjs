@@ -14,15 +14,19 @@ export default defineConfig({
   adapter: netlify(),
   output: "server",
   redirects: {
-    "/posts/[...slug]": "/blog/posts/[...slug]",
-    "/tags/[tag]": "/blog/tags/[tag]",
-    "/tags/": "/blog/tags/",
+    // "/blog/posts/[...slug]": "/posts/[...slug]",
+    // "/blog/tags/[tag]": "/tags/[tag]",
+    // "/blog/tags/": "/tags/",
+    // "/blog/[...page]": "/[...page]",
+    // "/blog/": "/",
   },
   legacy: {
     collections: true,
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+    ],
     server: {
       allowedHosts: true,
     },

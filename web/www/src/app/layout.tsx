@@ -3,6 +3,8 @@ import { Geist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "@workspace/ui/globals.css";
 import { BottomNav } from "@workspace/ui/components/bottom-nav";
+import Navbar from "@workspace/ui/components/navbar";
+import { SidebarProvider } from "@workspace/ui/components/sidebar";
 
 export const metadata: Metadata = {
   title: "Altie122",
@@ -20,10 +22,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang='en' className={`${geist.variable}`}>
+      <html lang='en'>
         <body>
+        <SidebarProvider>
+          <Navbar ModeToggle={<div/>} />
           <div className='h-[100dvh] w-full'>{children}</div>
-					<BottomNav currentPage={"/"} />
+          <BottomNav />
+        </SidebarProvider>
         </body>
       </html>
     </ClerkProvider>

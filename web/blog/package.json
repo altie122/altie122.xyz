@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "@workspace/blog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@workspace/ui": "workspace:*",
     "@astrojs/check": "^0.9.4",
     "@astrojs/db": "^0.14.6",
     "@astrojs/mdx": "^4.0.8",
@@ -54,7 +55,6 @@
     "@tailwindcss/vite": "^4.1.7",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "@url122/astro": "^2.0.1",
     "@yt-to-ytnocookie/astro-component": "^1.1.0",
     "astro": "^5.3.0",
     "astro-lazy-youtube-embed": "^0.5.4",
