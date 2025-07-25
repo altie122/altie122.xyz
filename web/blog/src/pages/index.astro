@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import { db, links, projects } from 'astro:db';
+import LinksCard from '~/components/LinksCard';
+import { BlogCard } from "../components/BlogCard";
+import { ProjectsCard } from '~/components/ProjectsCard';
+import { Banner } from '~/components/Blog/Banner';
+
+let allPosts = [...(await getCollection('posts', ({ data }) => {
+  return data.isDraft !== true && data.isHidden !== true;
+}))];
+allPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+let newestPost = allPosts![0];
+
+const linksList = await db.select().from(links);
+const projectsList = await db.select().from(projects);
+
+const randomLink = linksList[Math.floor(Math.random() * linksList.length)];
+const randomProject = projectsList[Math.floor(Math.random() * projectsList.length)];
+
+---
+
+<Layout title="Home" description='Altie122' page="/">
+	<main>
+		<div class="prose-no-y-padding">
+			<h1>Altie122</h1>
+			<h2>Links:</h2>
+			<p>Links have moved to the <a href="/links">Links</a> page.</p>
+			<br />
+			<h3>Here is one to check out:</h3>
+		</div>
+		<div class="prose-container-no-y-padding">
+			<LinksCard link={randomLink} isAdmin={false} client:only="react" />
+		</div>
+		<div class="prose-no-y-padding">
+			<h2>Projects:</h2>
+			<p>Projects have moved to the <a href="/projects">Projects</a> page.</p>
+			<br />
+			<h3>Here is one to check out:</h3>
+		</div>
+		<div class="prose-container-no-y-padding">
+			<ProjectsCard project={randomProject} isAdmin={false} client:only="react" />
+		</div>
+		<div class="prose pb-16">
+			<h2>Newest Blog Post:</h2>
+			<br />
+			{
+				newestPost && <BlogCard url={"/blog/posts/" + newestPost.slug} title={newestPost.data.title} image={newestPost.data.image} date={newestPost.data.pubDate} author={newestPost.data.author} description={newestPost.data.description} client:only="react" />
+			}
+		</div>
+	</main>
+</Layout>
