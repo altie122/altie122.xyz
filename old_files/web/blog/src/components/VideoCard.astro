@@ -1,0 +1,12 @@
+---
+import { type VideoInterface } from "@/lib/consts";
+import { YouTube } from 'astro-lazy-youtube-embed';
+import VideoCardTSX from './VideoCardTSX';
+
+const { data } = Astro.props;
+
+---
+
+<VideoCardTSX data={data} client:only="react">
+  <YouTube videoId={data.id} title="" thumbnail={data.thumbnails?.maxres?.url || data.thumbnails?.standard?.url || data.thumbnails?.high?.url || data.thumbnails?.medium?.url || data.thumbnails?.default?.url} class="rounded-lg w-full" noLink />
+</VideoCardTSX>

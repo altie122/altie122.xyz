@@ -1,0 +1,7 @@
+---
+import UserButton from '~/components/UserButton';
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Account" description="Manage your account" page="account">
+  <UserButton client:only="react" />
+</Layout>

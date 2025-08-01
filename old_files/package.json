@@ -1,0 +1,20 @@
+{
+  "name": "altie122.xyz",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev:www": "pnpm --filter @workspace/www dev",
+    "dev:backend": "pnpm --filter @workspace/backend dev",
+    "dev:blog": "pnpm --filter @workspace/blog dev",
+    "dev": "concurrently \"pnpm:dev:*\""
+  },
+  "keywords": [],
+  "author": "Alton Rose (altie122)",
+  "license": "PROPRIETARY",
+  "packageManager": "pnpm@10.12.4",
+  "devDependencies": {
+    "@workspace/typescript-config": "workspace:*",
+    "concurrently": "^9.2.0",
+    "typescript": "5.7.3"
+  }
+}
