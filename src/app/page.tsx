@@ -6,6 +6,9 @@ import { LinksCard } from "@/components/links-card";
 export default async function HomePage() {
   const link = await fetchQuery(api.links.random);
   const project = await fetchQuery(api.projects.random);
+  if (!link || !project) {
+    return;
+  }
   return (
     <main>
       <div className="prose-no-y-padding">
