@@ -1,2 +1,12 @@
 onlyBuiltDependencies:
   - '@clerk/shared'
+  - '@scarf/scarf'
+  - '@tailwindcss/oxide'
+  - '@tree-sitter-grammars/tree-sitter-yaml'
+  - '@vercel/speed-insights'
+  - core-js-pure
+  - esbuild
+  - sharp
+  - tree-sitter
+  - tree-sitter-json
+  - unrs-resolver
