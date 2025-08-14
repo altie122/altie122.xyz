@@ -1,8 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
 
 :root {
   --background: oklch(0.8002 0.0744 18.8379);
@@ -100,59 +152,6 @@
   --shadow-2xl: 4px 4px 10px 0px hsl(354 19.2308% 20.3922% / 0.30);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -163,13 +162,22 @@
   }
 }
 
-
 @layer utilities {
+  .prose,
+  .prose-container {
+    @apply container mx-auto px-4 pt-8 pb-16 sm:px-6 lg:px-8 max-w-[1024px];
+  }
+  .prose-no-y-padding,
+  .prose-container-no-y-padding {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1024px];
+  }
   .prose h1,
+  .prose-no-y-padding h1,
   .prose-h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
   }
   .prose h2,
+  .prose-no-y-padding h2,
   .prose-h2 {
     @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
   }
@@ -177,30 +185,57 @@
     @apply border-none;
   }
   .prose h3,
+  .prose-no-y-padding h3,
   .prose-h3 {
     @apply scroll-m-20 text-2xl font-semibold tracking-tight;
   }
   .prose h4,
+  .prose-no-y-padding h4,
   .prose-h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
   }
   .prose p,
+  .prose-no-y-padding p,
   .prose-p {
     @apply leading-7 [&:not(:first-child)]:mt-6;
   }
   .prose blockquote,
+  .prose-no-y-padding blockquote,
   .prose-blockquote {
     @apply mt-6 border-l-2 pl-6 italic;
   }
+  .prose table,
+  .prose-no-y-padding table,
+  .prose-table {
+    @apply w-full;
+  }
+  .prose tr,
+  .prose-no-y-padding tr,
+  .prose-tr {
+    @apply m-0 border-t p-0 even:bg-muted;
+  }
+  .prose th,
+  .prose-no-y-padding th,
+  .prose-th {
+    @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
+  }
   .prose ul,
+  .prose-no-y-padding ul,
   .prose-ul {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
   }
   .prose ol,
+  .prose-no-y-padding ol,
   .prose-ol {
     @apply my-6 ml-6 list-decimal [&>li]:mt-2;
   }
+  .prose code,
+  .prose-no-y-padding code,
+  .prose-code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
   .prose a,
+  .prose-no-y-padding a,
   .prose-a {
     @apply text-primary underline decoration-dotted hover:decoration-solid;
   }

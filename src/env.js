@@ -8,6 +8,10 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
+    YT_TO_YTNOCOOKIE_YT_API: z.string(),
+    YT_TO_YTNOCOOKIE_API_DISCORD_WEBHOOK: z.string(),
+    YT_TO_YTNOCOOKIE_DISCORD_WEBHOOK: z.string(),
   },
 
   /**
@@ -25,6 +29,10 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
+    YT_TO_YTNOCOOKIE_YT_API: process.env.YT_TO_YTNOCOOKIE_YT_API,
+    YT_TO_YTNOCOOKIE_API_DISCORD_WEBHOOK: process.env.YT_TO_YTNOCOOKIE_API_DISCORD_WEBHOOK,
+    YT_TO_YTNOCOOKIE_DISCORD_WEBHOOK: process.env.YT_TO_YTNOCOOKIE_DISCORD_WEBHOOK,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

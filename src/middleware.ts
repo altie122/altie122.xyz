@@ -1,6 +1,6 @@
 import { clerkMiddleware } from '@clerk/nextjs/server'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+// Make sure that the `/api/webhooks/(.*)` route is not protected here
 export default clerkMiddleware()
 
 export const config = {

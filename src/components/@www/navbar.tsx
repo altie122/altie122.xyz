@@ -1,6 +1,6 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 interface NavbarProps {
   ModeToggle: React.ReactNode;
@@ -8,7 +8,7 @@ interface NavbarProps {
 
 export function Navbar({ ModeToggle }: NavbarProps) {
   return (
-    <header className="border-sidebar-border bg-sidebar text-sidebar-foreground sticky top-0 z-50 flex h-12 w-full flex-row items-center justify-between border-b shadow">
+    <header className="border-sidebar-border bg-sidebar text-sidebar-foreground fixed top-0 z-10 flex h-12 w-full flex-row items-center justify-between border-b shadow">
       <div className="flex h-full basis-1/2 flex-row items-center justify-start gap-4 p-2 md:basis-1/3">
         <Tooltip>
           <TooltipTrigger asChild>

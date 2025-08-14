@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { type Doc } from "@convex/_generated/dataModel";
 import Link from "next/link";
-import { getMetaData } from "@/lib/projectsMetadata";
+import { getMetaData } from "@/lib/@www/projectsMetadata";
 
 interface ProjectsCardProps {
   project: Doc<"projects">;

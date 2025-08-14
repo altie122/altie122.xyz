@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { type Doc } from "@convex/_generated/dataModel";
-import { getMetaData } from "@/lib/linksMetadata";
+import { getMetaData } from "@/lib/@www/linksMetadata";
 import Link from "next/link";
 
 interface LinksCardProps {
