@@ -16,7 +16,7 @@ export function BottomNav({ currentPage }: BottomNavProps) {
             ? "Projects"
             : "Other";
   return (
-    <div className="flex h-12 flex-row border-t border-sidebar-border bg-sidebar text-sidebar-foreground bottom-0 z-50 sticky w-full justify-center items-start gap-6">
+    <div className="flex h-12 flex-row border-t border-sidebar-border bg-sidebar text-sidebar-foreground bottom-0 z-50 fixed w-full justify-center items-start gap-6">
       {currentPageTitle === "Home" ? (
         <a
           href="/"
