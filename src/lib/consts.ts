@@ -56,19 +56,7 @@ export const pages = [
     href: "https://mods.altie122.xyz/",
     isExternal: true,
     icon: Box,
-  },
-  {
-    name: "YT to YT No Cookie",
-    href: "https://yt-to-ytnocookie.altie122.xyz/",
-    isExternal: true,
-    icon: PlaySquare,
-  },
-  {
-    name: "DrigonFlow",
-    href: "https://drigonflow.xyz/",
-    isExternal: true,
-    icon: TvMinimalPlay,
-  },
+  }
 ];
 
 export const socialButtons = [
