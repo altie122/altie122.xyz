@@ -1,5 +1,8 @@
 {
   "name": "Alton \"altie\" Rose",
   "pfp": "https://www.altie122.xyz/icon.png",
-  "website": "https://altonrose.dev"
+  "website": {
+    "url": "https://altonrose.dev",
+    "title": "altonrose.dev"
+  }
 }

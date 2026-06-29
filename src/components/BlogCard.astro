@@ -11,6 +11,7 @@ import {
 import type { CollectionEntry } from "astro:content";
 import { getEntries } from "astro:content";
 import { Image } from "astro:assets";
+import { Badge } from "./ui/badge";
 
 interface Props {
   entry: CollectionEntry<"posts">;
@@ -24,10 +25,17 @@ const author = await getEntries(entry.data.authors);
 
 <Card className='w-full'>
   <CardHeader>
-    <CardTitle>{data.title}</CardTitle>
+    <CardTitle className='inline-flex gap-4 justify-between'
+      >{data.title}
+      <span class='flex flex-row gap-4 items-center'>
+        {data.tags.map((tag) => <Badge className='w-fit'>{tag}</Badge>)}</span
+      ></CardTitle
+    >
     <CardDescription>{data.description}</CardDescription>
     <CardDescription>
-      {data.pubDate.toLocaleDateString()} | {author.map((author) => author.data.name).join(", ")}
+      {data.pubDate.toLocaleDateString()} | {
+        author.map((author) => author.data.name).join(", ")
+      }
     </CardDescription>
   </CardHeader>
   <CardContent>

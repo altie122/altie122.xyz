@@ -54,7 +54,10 @@ const authors = defineCollection({
   schema: z.object({
     name: z.string(),
     pfp: z.url(),
-    website: z.url().optional(),
+    website: z.object({
+      url: z.url(),
+      title: z.string(),
+    }).optional(),
   }),
 });
 
