@@ -12,8 +12,8 @@ export function BottomNav({ currentPage }: BottomNavProps) {
         ? "Blog"
         : currentPage.includes("/links")
           ? "Links"
-          : currentPage.includes("/projects")
-            ? "Projects"
+          // : currentPage.includes("/projects")
+          //   ? "Projects"
             : "Other";
   return (
     <div className="flex h-12 flex-row border-t border-sidebar-border bg-sidebar text-sidebar-foreground bottom-0 z-50 fixed w-full justify-center items-start gap-6">
@@ -61,7 +61,7 @@ export function BottomNav({ currentPage }: BottomNavProps) {
           <p className="text-xs text-center text-sidebar-foreground">Links</p>
         </a>
       )}
-      {currentPageTitle === "Projects" ? (
+      {/* {currentPageTitle === "Projects" ? (
         <a
           href="/projects"
           className="flex flex-col border-t border-teal-600 h-full -m-px pt-px items-center justify-center"
@@ -78,7 +78,7 @@ export function BottomNav({ currentPage }: BottomNavProps) {
             Projects
           </p>
         </a>
-      )}
+      )} */}
     </div>
   );
 }

@@ -3,10 +3,7 @@ import {
   Home,
   Link,
   Newspaper,
-  Package,
-  Palette,
-  PlaySquare,
-  TvMinimalPlay,
+  // Package,
 } from "lucide-react";
 
 export const pages = [
@@ -29,12 +26,12 @@ export const pages = [
     isExternal: false,
     icon: Link,
   },
-  {
-    name: "Projects",
-    href: "/projects",
-    isExternal: false,
-    icon: Package,
-  },
+  // {
+  //   name: "Projects",
+  //   href: "/projects",
+  //   isExternal: false,
+  //   icon: Package,
+  // },
   // {
   // name: "Video List",
   // href: "/videos",

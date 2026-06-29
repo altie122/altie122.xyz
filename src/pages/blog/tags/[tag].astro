@@ -2,7 +2,7 @@
 export const prerender = true;
 import { getCollection } from "astro:content";
 import Layout from '@/layouts/Layout.astro';
-import { BlogCard } from "@/components/BlogCard";
+import BlogCard from "@/components/BlogCard.astro";
 
 export async function getStaticPaths() {
 
@@ -27,6 +27,6 @@ const { posts } = Astro.props;
 <Layout title={tag} description='Altie122' page={`/${tag}`}>
   <p class="prose-p">Posts tagged with {tag}</p>
   <ul>
-    {posts.map((post) => <BlogCard url={"/blog/posts/" + post.slug} title={post.data.title} image={post.data.image} date={post.data.pubDate} author={post.data.author} description={post.data.description} client:only="react" />)}
+    {posts.map((post) => <BlogCard entry={post} />)}
   </ul>
 </Layout>

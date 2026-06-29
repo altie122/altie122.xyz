@@ -17,19 +17,6 @@ import {
 import {
   ChevronDown,
   PanelLeft,
-  Newspaper,
-  BookCheck,
-  NotebookPen,
-  LibraryBig,
-  Code,
-  Package,
-  Swords,
-  Server,
-  Image,
-  ScrollText,
-  BookUser,
-  BookOpen,
-  Eye,
 } from "lucide-react";
 import {
   Collapsible,

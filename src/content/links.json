@@ -1,0 +1,59 @@
+[
+  {
+    "type": "link",
+    "id": "11075235-ae37-4da5-aa08-e33e711e3090",
+    "icon": "https://assets.twitch.tv/assets/favicon-32-e29e246c157142c94346.png",
+    "title": "Altie122 Twitch Channel",
+    "url": "https://www.twitch.tv/altie122",
+    "description": "Lives Streams, my main and favorite way to make content.",
+    "activity_level": "Streams 4 times per week"
+  },
+  {
+    "type": "link",
+    "id": "3309a3a6-e228-42cc-bfd5-27cb17e5aa67",
+    "icon": "https://www.youtube.com/s/desktop/3205cbb0/img/logos/favicon_144x144.png",
+    "title": "Altie122 YouTube Channel",
+    "url": "https://www.youtube.com/@altie122",
+    "description": "Mostly VoD's and random videos"
+  },
+  {
+    "type": "link",
+    "id": "20d9ca7a-948a-49f0-9db9-542718433c37",
+    "icon": "https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png",
+    "title": "Altie122 X account",
+    "url": "https://x.com/altie122",
+    "description": "I'm probably the only person other than the elongated muskrat to call it x 😂"
+  },
+  {
+    "type": "link",
+    "id": "a123e395-f9ec-4633-bce0-40a597750ce4",
+    "icon": "https://www.altie122.xyz/icon.png",
+    "title": "Altie122 Tumblr account",
+    "url": "https://www.tumblr.com/altie122",
+    "description": "Have I ever actually posted on here?"
+  },
+  {
+    "type": "link",
+    "id": "81b1cd4e-6d86-4f9c-abea-d393e036f55b",
+    "icon": "https://www.tiktok.com/favicon.ico",
+    "title": "Altie122 TikTok",
+    "url": "https://www.tiktok.com/@altie122",
+    "description": "Welp TikTok is banned (in the US) so... Welp TikTok is no longer banned so... Follow me... pwease ^_^"
+  },
+  {
+    "type": "link",
+    "id": "1a93b998-b5e2-4b36-9c13-3defc1f08609",
+    "icon": "https://www.altie122.xyz/icon.png",
+    "title": "Discord Server",
+    "url": "https://discord.gg/aJzWhRGDjc",
+    "description": "Come bother the hell out of me... please... 🥺"
+  },
+  {
+    "type": "link",
+    "id": "d1cf5299-bcb5-4079-a932-72d898748f76",
+    "icon": "https://web-cdn.bsky.app/static/apple-touch-icon.png",
+    "title": "Altie122 BlueSky account (ignore)",
+    "url": "https://bsky.app/profile/altie122.xyz",
+    "description": "I barely remember this exists most days (I'm no longer using BlueSky)"
+  }
+]

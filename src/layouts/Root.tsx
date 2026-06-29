@@ -27,7 +27,7 @@ export default function Layout({ children, currentPage }: LayoutProps) {
     <SidebarProvider open={open} onOpenChange={setOpen}>
       <Progress />
       <AppSidebar />
-      <main className="flex flex-col w-full min-h-dvh">
+      <main className="flex flex-col w-full min-h-svh">
         <Navbar />
         {children}
         <BottomNav currentPage={currentPage} />
